@@ -6,6 +6,8 @@ const pinoLogger = require('./logger');
 const secondChanceItemsRoutes = require('./routes/secondChanceItemsRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const authRoutes = require('./routes/authRoutes');
+const path = require('path');
+
 
 const connectToDatabase = require('./models/db');
 const {loadData} = require("./util/import-mongo/index");
@@ -23,6 +25,8 @@ connectToDatabase().then(() => {
 
 
 app.use(express.json());
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
+
 
 // Route files
 
